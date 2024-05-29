@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mario Game</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <div id="modal" class="modal"> <!-- Register and Login buttons -->
+            <div class="button-container">
+                <button onclick ="toggleModal(event)" id="register-button">Register</button>
+                <button onclick ="toggleModal(event)" id="login-button" class="not-active">Login</button>
+            </div>
+
+            <!-- Textboxes for Register Form -->
+            <form onsubmit=register(event) id="register-form">
+                <label for="register-email"></label>
+                <input type="email" id="register-email" value="demo@example.com" required>
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" value="password" required pattern=".{6,}"> <!-- pattern=".{6,}" means must contain 6 or more letters-->
+                <label for="register-username">Username</label>
+                <input type="text" id="register-username" value="username" required>
+                <br>
+                <input type="submit" value="Sign Up">
+            </form>
+
+            <!-- Textboxes for Login Form -->
+            <form onsubmit=login(event) id="login-form" class="hidden">
+                <label for="login-email"></label>
+                <input type="email" id="login-email" placeholder="demo@example.com" required>
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="password" required pattern=".{6,}"> <!-- pattern=".{6,}" means must contain 6 or more letters-->
+                <br>
+                <input type="submit" value="Sign in">
+            </form>
+        </div>
+
+        <!-- This shows the logout button, holds username and highscore -->
+        <div class="info-container">
+            <button id="logout-button" class="hidden" onclick="logout()">Logout</button>
+            <h3 id="username"> </h3>
+            <h3 id="highscore-tag" class="hidden">HighScore: <span id="highscore"></span></h3>
+
+        </div>
+        
+        <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script>
+        <script src="game.js"></script>
+    </body>
+</html>
